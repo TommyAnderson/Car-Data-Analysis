@@ -24,7 +24,7 @@ dataset <- dataset %>%
   mutate(across(where(is.character), tolower))
 
 #convert to military time
-dataset$Time <- parse_time(dataset$Time, format = "%I:%M %p")
+dataset$Time <- parse_date_time(dataset$Time, format = "%I:%M %p")
 dataset$TimeFormatted <- format(dataset$Time, "%H:%M")
 
 # UI
