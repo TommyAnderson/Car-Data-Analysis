@@ -73,9 +73,21 @@ server <- function(input, output) {
     }
   })
   
+
   output$plot_description <- renderText({
-    paste("This plot shows Speed vs", input$X, "split by", input$Splitby)
+    if (input$X == "Hour") {
+      "Average speed by hour of day. If enough data is collected should help see rush hour traffic"
+    } else if (input$X == "Color") {
+      "Comparing seed by car color, should show if car color has any type of correlation with speed"
+    } else if (input$X == "Type.Of.Car") {
+      "This bar chart shows average speed for different car types. It can suggest whether certain vehicle categories tend to drive faster."
+    } else if (is.numeric(dataset[[input$X]])) {
+      paste("This scatter plot shows how Speed changes in relation to", input$X, ", colored by", input$Splitby, ".")
+    } else {
+      paste("This bar chart displays average Speed by", input$X, ", grouped by", input$Splitby, ".")
+    }
   })
+  
   
   output$table_01 <- DT::renderDataTable({
     DT::datatable(dataset[, c(input$X, "Speed", input$Splitby)],
