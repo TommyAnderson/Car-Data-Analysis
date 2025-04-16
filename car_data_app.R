@@ -4,6 +4,7 @@ library(DT)
 library(rsconnect)
 library(readxl)
 library(RCurl)
+library(lubridate)
 
 rm(list = ls())
 
@@ -17,6 +18,16 @@ dataset$Type.Of.Car <- trimws(tolower(dataset$Type.Of.Car))
 dataset$Color <- trimws(tolower(dataset$Color))
 dataset$Color[dataset$Color %in% c("light grey", "dark grey", "grey")] <- "grey"
 dataset$Color[dataset$Color %in% c("red", "maroon", "dark red")] <- "red"
+
+# Standardize all text to lowercase
+dataset <- dataset %>%
+  mutate(across(where(is.character), tolower))
+
+#convert to military time
+dataset <- data.frame(Time = c("2:30 PM", "8:15 AM", "12:00 PM"))
+
+dataset$Time <- parse_time(dataset$Time, format = "%I:%M %p")
+dataset$TimeFormatted <- format(dataset$Time, "%H:%M")
 
 # UI
 column_names <- colnames(dataset)
