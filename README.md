@@ -49,7 +49,7 @@ We developed an interactive Shiny web application that allows users to:
 
 Below is a preview of our working Shiny application, showing a plot of average speed by vehicle type, split by color:
 
-![Alt text](file:///var/folders/1f/8pq2z9gd6v10nhd2lgf6t7tw0000gn/T/TemporaryItems/NSIRD_screencaptureui_d2Je02/Screen%20Shot%202025-04-16%20at%205.50.29%20PM.png)
+![Alt text](https://github.com/TommyAnderson/Car-Data-Analysis/blob/main/speed%20vs%20color.jpeg)
 
 
 
