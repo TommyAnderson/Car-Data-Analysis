@@ -55,7 +55,7 @@ Below is a preview of our working Shiny application, showing a plot of average s
 
 ##  Shiny Application
 
-The Shiny app is fully interactive and can be run locally using the `cardata.R` file. Features include:
+The Shiny app is fully interactive and can be run locally using the `car_data_app.R` file. Features include:
 - Dropdown filters for variable selection
 - Dynamic charts comparing average vehicle speeds
 - Cleaned and standardized data for accurate analysis
