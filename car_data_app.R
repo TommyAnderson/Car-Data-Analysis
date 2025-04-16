@@ -1,11 +1,11 @@
 library(shiny)
 library(ggplot2)
+library(dplyr)
 library(DT)
 library(rsconnect)
 library(readxl)
 library(RCurl)
 library(lubridate)
-libary(dplyr)
 
 rm(list = ls())
 
@@ -13,7 +13,6 @@ rm(list = ls())
 data_url <- getURL("https://raw.githubusercontent.com/TommyAnderson/Car-Data-Analysis/refs/heads/main/Car%20Data%20Collection.csv")
 dataset <- read.csv(text = data_url, stringsAsFactors = FALSE)
 
-dataset$Type.of.Car <- trimws(tolower(dataset$Type.of.Car))
 
 # Standardize color labels
 dataset$Color <- trimws(tolower(dataset$Color))
@@ -25,8 +24,9 @@ dataset <- dataset %>%
   mutate(across(where(is.character), tolower))
 
 #convert to military time
-dataset$Time <- parse_date_time(dataset$Time, orders = "%I:%M %p")
+dataset$Time <- parse_date_time(dataset$Time, orders = "I:M p")
 dataset$TimeFormatted <- format(dataset$Time, "%H:%M")
+dataset$Hour <- hour(dataset$Time)
 
 # UI
 column_names <- colnames(dataset)
@@ -34,6 +34,7 @@ column_names <- colnames(dataset)
 ui <- fluidPage(
   titlePanel("Car Data For Rock Island"),
   h4("For Rock Island, IL"),
+  tags$p(tags$b("Note:"), "Y-axis is always Speed"),
   
   fluidRow(
     column(2,
@@ -58,7 +59,7 @@ server <- function(input, output) {
     x_data <- dataset[[input$X]]
     y_data <- dataset[["Speed"]]  # Fixed Y
     
-    is_x_cat <- is.character(x_data) || is.factor(x_data)
+    is_x_cat <- is.character(x_data) || is.factor(x_data) ||input$X == 'Hour'
     
     # Build appropriate plot
     if (is_x_cat) {
