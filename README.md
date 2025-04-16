@@ -49,7 +49,18 @@ We developed an interactive Shiny web application that allows users to:
 
 Below is a preview of our working Shiny application, showing a plot of average speed by vehicle type, split by color:
 
-![Alt text](https://github.com/TommyAnderson/Car-Data-Analysis/blob/main/speed%20vs%20color.jpeg)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/TommyAnderson/Car-Data-Analysis/main/speed%20vs%20color.jpeg" alt="Shiny App Screenshot - Speed vs Color" width="600"/>
+</p>
+
+##  Shiny Application
+
+The Shiny app is fully interactive and can be run locally using the `cardata.R` file. Features include:
+- Dropdown filters for variable selection
+- Dynamic charts comparing average vehicle speeds
+- Cleaned and standardized data for accurate analysis
+- Data table for easy exploration
+
 
 
 
