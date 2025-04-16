@@ -15,7 +15,7 @@ Each member was responsible for documenting:
 ### Data Collection Shifts
 - **Diya** recorded on April 7th between 4:30 PM - 5:15 PM.
 - **Tommy** collected data on April 9th 4:15 PM - 4:50 PM.
-- **Philip ** collected data on April 14th 2:15 PM - 3:15 PM.
+- Philip collected data on April 14th 2:15 PM - 3:15 PM.
 
 ### Communication and Coordination
 
