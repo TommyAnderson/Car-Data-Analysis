@@ -5,6 +5,7 @@ library(rsconnect)
 library(readxl)
 library(RCurl)
 library(lubridate)
+libary(dplyr)
 
 rm(list = ls())
 
@@ -12,7 +13,7 @@ rm(list = ls())
 data_url <- getURL("https://raw.githubusercontent.com/TommyAnderson/Car-Data-Analysis/refs/heads/main/Car%20Data%20Collection.csv")
 dataset <- read.csv(text = data_url, stringsAsFactors = FALSE)
 
-dataset$Type.Of.Car <- trimws(tolower(dataset$Type.Of.Car))
+dataset$Type.of.Car <- trimws(tolower(dataset$Type.of.Car))
 
 # Standardize color labels
 dataset$Color <- trimws(tolower(dataset$Color))
@@ -24,7 +25,7 @@ dataset <- dataset %>%
   mutate(across(where(is.character), tolower))
 
 #convert to military time
-dataset$Time <- parse_date_time(dataset$Time, format = "%I:%M %p")
+dataset$Time <- parse_date_time(dataset$Time, orders = "%I:%M %p")
 dataset$TimeFormatted <- format(dataset$Time, "%H:%M")
 
 # UI
