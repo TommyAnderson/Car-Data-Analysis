@@ -61,6 +61,8 @@ The Shiny app is fully interactive and can be run locally using the `car_data_ap
 - Cleaned and standardized data for accurate analysis
 - Data table for easy exploration
 
+Link for the Shiny App: https://tommyanderson.shinyapps.io/CarData/
+
 
 
 
